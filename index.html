@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mappedin/mappedin-js@latest/lib/mappedin.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      #app {
+        height: 100%;
+        width: 100%;
+        position: relative;
+      }
+    </style>
+    <title>Mappedin Web SDK v5 Getting Started with JSDelivr</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+
+      // See Trial API key Terms and Conditions
+      // https://developer.mappedin.com/guides/api-keys
+      // mapId: '66f7ff6142d0ac000b79d8db', // 300 Hazel Street Waterloo ON N2L 3P2
+      // key: 'mik_5en9U07n3mUydPTj850100724', // Your API key
+      // secret: 'mis_FoUPRwtRfojkqYl3qiRuFyQc9W2ZszsmMbcx9StWTROab8f1178', // Your API secret
+      import {
+        getMapData,
+        show3dMap
+      } from "https://cdn.jsdelivr.net/npm/@mappedin/mappedin-js@beta/lib/esm/index.js";
+
+      // See Demo API key Terms and Conditions
+      // https://developer.mappedin.com/web/v6/demo-keys-and-maps/
+      const options = {
+        mapId: '66f7ff6142d0ac000b79d8db', // 300 Hazel Street Waterloo ON N2L 3P2
+        key: 'mik_5en9U07n3mUydPTj850100724', // Your API key
+        secret: 'mis_FoUPRwtRfojkqYl3qiRuFyQc9W2ZszsmMbcx9StWTROab8f1178', // Your API secret
+      }
+
+      getMapData(options).then(async (mapData) => {
+        const mapView = await show3dMap(document.getElementById("app"), mapData);
+        mapView.expand()
+        mapView.Outdoor.setStyle('https://tiles-cdn.mappedin.com/styles/starlight/style.json');
+        const firstSpace = mapData.getByType('space').find(s => s.name === '200');
+        const secondSpace = mapData.getByType('space').find(s => s.name === 'Male washroom');
+        if (firstSpace && secondSpace) {
+          const directions = mapView.getDirections(firstSpace, secondSpace);
+
+          if (directions) {
+            // Add a path from the first space to the second space.
+            mapView.Navigation.draw(directions);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
