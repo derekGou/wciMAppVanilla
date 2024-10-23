@@ -57,7 +57,6 @@ input {
     border: none;
     flex-grow: 1;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-right: 1px #999 solid;
 }
 input:focus {
     outline: none;

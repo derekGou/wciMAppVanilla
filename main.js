@@ -10,7 +10,7 @@ const options = {
 
 function clickSpace(str){
     const input = document.getElementById('searchinput')
-    input.value = str
+    input.value = ''
 }
 
 getMapData(options).then(async (mapData) => {
@@ -49,7 +49,9 @@ getMapData(options).then(async (mapData) => {
                 let p = document.createElement("p")
                 p.innerHTML = spaceList[i]
                 autofill.appendChild(p)
-                autofill.addEventListener('click', function(){clickSpace(spaceList[i])})
+                autofill.addEventListener('click', function(){
+                    clickSpace(spaceList[i])
+                })
                 root.appendChild(autofill)
                 num+=1
             }
