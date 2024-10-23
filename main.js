@@ -8,9 +8,9 @@ const options = {
     secret: 'mis_FoUPRwtRfojkqYl3qiRuFyQc9W2ZszsmMbcx9StWTROab8f1178',
 }
 
-function clickSpace(element){
+function clickSpace(str){
     const input = document.getElementById('searchinput')
-    input.value = element.children[0].innerHTML
+    input.value = str
 }
 
 getMapData(options).then(async (mapData) => {
