@@ -32,9 +32,18 @@ getMapData(options).then(async (mapData) => {
         }
         mapView.updateState(space, {
             interactive: true,
-            hoverColor: "#f26336",
+            hoverColor: "#1374c5",
         });
     });
+    mapData.getByType("connection").forEach((connection) => {
+        const coords = connection.coordinates.find(
+            (coord) => coord.floorId === mapView.currentFloor.id
+        );
+        if (coords) {
+            mapView.Labels.add(coords, connection.name);
+        }
+    });
+    var fullList = spaceList
     spaceList = [...new Set(spaceList)]
     spaceList.sort()
     let root = document.getElementById("autofills");
