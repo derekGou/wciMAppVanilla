@@ -8,6 +8,11 @@ const options = {
     secret: 'mis_FoUPRwtRfojkqYl3qiRuFyQc9W2ZszsmMbcx9StWTROab8f1178',
 }
 
+function clickSpace(element){
+    const input = document.getElementById('searchinput')
+    input.value = element.children[0].innerHTML
+}
+
 getMapData(options).then(async (mapData) => {
     const mapView = await show3dMap(document.getElementById("app"), mapData);
     // mapView.expand()
@@ -44,6 +49,7 @@ getMapData(options).then(async (mapData) => {
                 let p = document.createElement("p")
                 p.innerHTML = spaceList[i]
                 autofill.appendChild(p)
+                autofill.addEventListener('click', clickSpace(spaceList[i]))
                 root.appendChild(autofill)
                 num+=1
             }
