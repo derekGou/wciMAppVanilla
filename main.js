@@ -35,6 +35,7 @@ getMapData(options).then(async (mapData) => {
     root.innerHTML = '';
     const input = document.getElementById('searchinput')
     input.oninput = function(){
+        let num = 0
         for (let i = 0; i<spaceList.length; i++){
             if ((input.value!='')&&(spaceList[i].indexOf(input.value)!=-1)){
                 let autofill = document.createElement("div")
@@ -43,7 +44,11 @@ getMapData(options).then(async (mapData) => {
                 p.innerHTML = spaceList[i]
                 autofill.appendChild(p)
                 root.appendChild(autofill)
+                num+=1
             }
+        }
+        if (num==0){
+            root.innerHTML = '';
         }
     };
 });
