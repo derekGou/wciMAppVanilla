@@ -49,7 +49,7 @@ getMapData(options).then(async (mapData) => {
                 let p = document.createElement("p")
                 p.innerHTML = spaceList[i]
                 autofill.appendChild(p)
-                autofill.addEventListener('click', clickSpace(spaceList[i]))
+                autofill.addEventListener('click', function(){clickSpace(spaceList[i])})
                 root.appendChild(autofill)
                 num+=1
             }
