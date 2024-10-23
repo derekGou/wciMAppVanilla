@@ -23,7 +23,7 @@ getMapData(options).then(async (mapData) => {
     var spaceList = []
     mapData.getByType("space").forEach((space) => {
         if (space.name){
-            spaceList.push(space.name)
+            spaceList.push(space.name.trim())
         }
         mapView.updateState(space, {
             interactive: true,
