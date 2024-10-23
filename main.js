@@ -33,10 +33,9 @@ getMapData(options).then(async (mapData) => {
     spaceList = [...new Set(spaceList)]
     spaceList.sort()
     let root = document.getElementById("autofills");
-    root.innerHTML = '';
     const input = document.getElementById('searchinput')
     input.oninput = function(){
-        console.log(spaceList)
+        root.innerHTML = '';
         let num = 0
         for (let i = 0; i<spaceList.length; i++){
             if ((input.value!='')&&(spaceList[i].indexOf(input.value)!=-1)){
@@ -48,9 +47,6 @@ getMapData(options).then(async (mapData) => {
                 root.appendChild(autofill)
                 num+=1
             }
-        }
-        if (num==0){
-            root.innerHTML = '';
         }
     };
 });
