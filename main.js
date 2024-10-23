@@ -38,7 +38,7 @@ getMapData(options).then(async (mapData) => {
         root.innerHTML = '';
         let num = 0
         for (let i = 0; i<spaceList.length; i++){
-            if ((input.value!='')&&(spaceList[i].indexOf(input.value)!=-1)){
+            if ((input.value!='')&&(spaceList[i].toLowerCase().indexOf(input.value.toLowerCase())!=-1)){
                 let autofill = document.createElement("div")
                 autofill.classList.add("autofill")
                 let p = document.createElement("p")
