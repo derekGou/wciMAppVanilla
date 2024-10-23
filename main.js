@@ -35,7 +35,7 @@ getMapData(options).then(async (mapData) => {
     root.innerHTML = '';
     const input = document.getElementById('searchinput')
     input.oninput = function(){
-        console.log(input.value)
+        console.log(spaceList)
         let num = 0
         for (let i = 0; i<spaceList.length; i++){
             if ((input.value!='')&&(spaceList[i].indexOf(input.value)!=-1)){
