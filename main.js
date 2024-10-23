@@ -25,12 +25,13 @@ getMapData(options).then(async (mapData) => {
         if (space.name){
             spaceList.push(space.name)
         }
-        spaceList = [...new Set(spaceList)].sort()
         mapView.updateState(space, {
             interactive: true,
             hoverColor: "#f26336",
         });
     });
+    spaceList = [...new Set(spaceList)]
+    spaceList.sort()
     let root = document.getElementById("autofills");
     root.innerHTML = '';
     const input = document.getElementById('searchinput')
