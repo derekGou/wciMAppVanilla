@@ -51,6 +51,7 @@ getMapData(options).then(async (mapData) => {
                 autofill.appendChild(p)
                 autofill.addEventListener('click', function(){
                     clickSpace(spaceList[i])
+                    root.innerHTML = '';
                 })
                 root.appendChild(autofill)
                 num+=1
