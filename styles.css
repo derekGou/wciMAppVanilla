@@ -28,7 +28,7 @@ body {
     background-color: white;
     border: 2px #ddd solid;
     border-radius: 15px;
-    padding: 5px 0 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +48,7 @@ body {
     flex-grow: 1;
     gap: 10px;
     width: 100%;
-    padding: 0 20px;
+    padding: 5px 20px;
     box-sizing: border-box;
 }
 input {

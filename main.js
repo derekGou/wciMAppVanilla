@@ -36,7 +36,7 @@ getMapData(options).then(async (mapData) => {
     const input = document.getElementById('searchinput')
     input.oninput = function(){
         for (let i = 0; i<spaceList.length; i++){
-            if (input.value&&input.value in spaceList[i]){
+            if (input.value&&spaceList[i].indexOf(input.value)){
                 let autofill = document.createElement("div")
                 autofill.classList.add("autofill")
                 let p = document.createElement("p")
