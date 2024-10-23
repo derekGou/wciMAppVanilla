@@ -10,7 +10,7 @@ const options = {
 
 getMapData(options).then(async (mapData) => {
     const mapView = await show3dMap(document.getElementById("app"), mapData);
-    mapView.expand()
+    // mapView.expand()
     mapView.Outdoor.setStyle('https://tiles-cdn.mappedin.com/styles/starlight/style.json');
     const firstSpace = mapData.getByType('space').find(s => s.name === '200');
     const secondSpace = mapData.getByType('space').find(s => s.name === 'Male washroom');
@@ -20,11 +20,23 @@ getMapData(options).then(async (mapData) => {
             mapView.Navigation.draw(directions);
         }
     }
+    var spaceList = []
     mapData.getByType("space").forEach((space) => {
-        console.log(space.name)
+        if (space.name){
+            spaceList.push(space.name)
+        }
+        spaceList = [...new Set(spaceList)].sort()
         mapView.updateState(space, {
             interactive: true,
             hoverColor: "#f26336",
         });
     });
+    const input = document.getElementById('searchinput')
+    input.oninput = function(){
+        for (let i = 0; i<spaceList.length; i++){
+            if (input.value in spaceList){
+                
+            }
+        }
+    };
 });
