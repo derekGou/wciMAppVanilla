@@ -31,11 +31,18 @@ getMapData(options).then(async (mapData) => {
             hoverColor: "#f26336",
         });
     });
+    let root = document.getElementById("autofills");
+    root.innerHTML = '';
     const input = document.getElementById('searchinput')
     input.oninput = function(){
         for (let i = 0; i<spaceList.length; i++){
-            if (input.value in spaceList){
-                
+            if (input.value&&input.value in spaceList[i]){
+                let autofill = document.createElement("div")
+                autofill.classList.add("autofill")
+                let p = document.createElement("p")
+                p.innerHTML = spaceList[i]
+                autofill.appendChild(p)
+                root.appendChild(autofill)
             }
         }
     };
